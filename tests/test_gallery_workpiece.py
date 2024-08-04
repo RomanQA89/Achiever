@@ -13,13 +13,17 @@ def test_get_list_templates_achieve(get_list_templates_achieve):
 
                                   # Негативные тесты.
 
-def test_get_list_avatar_achieve_destruction(get_list_avatar_achieve_destruction):
+@pytest.mark.parametrize('method', ['POST', 'PUT', 'PATCH', 'DELETE'],
+                         ids=['method_POST', 'method_PUT', 'method_PATCH', 'method_DELETE'])
+def test_get_list_avatar_achieve_destructive(method, get_list_avatar_achieve_destructive):
     """Метод GET. Деструктивное тестирование. Мы пытаемся сломать систему,
     вызывая известный эндпоинт с неподдерживаемым типом запроса POST/PUT/PATCH/DELETE."""
-    assert get_list_avatar_achieve_destruction
+    assert get_list_avatar_achieve_destructive
 
 
-def test_get_list_templates_achieve_destructive(get_list_templates_achieve_destructive):
+@pytest.mark.parametrize('method', ['POST', 'PUT', 'PATCH', 'DELETE'],
+                         ids=['method_POST', 'method_PUT', 'method_PATCH', 'method_DELETE'])
+def test_get_list_templates_achieve_destructive(method, get_list_templates_achieve_destructive):
     """Метод GET. Деструктивное тестирование. Мы пытаемся сломать систему,
     вызывая известный эндпоинт с неподдерживаемым типом запроса POST/PUT/PATCH/DELETE."""
     assert get_list_templates_achieve_destructive

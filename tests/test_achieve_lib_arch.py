@@ -34,7 +34,9 @@ def test_get_list_inactive_achieve_neg_org_id(org_id, get_list_inactive_achieve_
     assert get_list_inactive_achieve_neg_org_id
 
 
-def test_get_list_inactive_achieve_destructive(get_list_inactive_achieve_destructive):
+@pytest.mark.parametrize('method', ['POST', 'PUT', 'PATCH', 'DELETE'],
+                         ids=['method_POST', 'method_PUT', 'method_PATCH', 'method_DELETE'])
+def test_get_list_inactive_achieve_destructive(method, get_list_inactive_achieve_destructive):
     """Метод GET. Деструктивное тестирование. Мы пытаемся сломать систему,
     вызывая известный эндпоинт с неподдерживаемым типом запроса POST/PUT/PATCH/DELETE."""
     assert get_list_inactive_achieve_destructive

@@ -83,13 +83,6 @@ def test_reg_login_neg(login, reg_login_neg):
     assert reg_login_neg
 
 
-# @pytest.mark.parametrize('login', ['', ' ', gen_alphanum_random_str(4), gen_alphanum_random_str(51), russian_chars(),
-#                                    special_chars(), 123456, gen_alphanum_random_str(256),
-#                                    gen_alphanum_random_str(1000), 'User'],
-#                          ids=['empty', 'spase', '4_symbols', '51_symbol', 'rus_chars', 'spec_chars',
-#                               'digits', '256_symbols', '1000_symbols', 'already_existing_login'])
-
-
 @pytest.mark.parametrize('specialty', [gen_alphanum_random_str(126), gen_alphanum_random_str(256),
                                        gen_alphanum_random_str(1000)],
                          ids=['126_symbol', '256_symbols', '1000_symbols'])

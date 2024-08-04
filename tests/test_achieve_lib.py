@@ -88,7 +88,9 @@ class TestAchievementsLibraryNegative:
         """Метод GET. Негативная проверка параметра title."""
         assert get_list_of_achieve_title_neg
 
-    def test_get_list_of_achieve_destructive(self, get_list_of_achieve_destructive):
+    @pytest.mark.parametrize('method', ['PUT', 'PATCH', 'DELETE'],
+                             ids=['method_PUT', 'method_PATCH', 'method_DELETE'])
+    def test_get_list_of_achieve_destructive(self, method, get_list_of_achieve_destructive):
         """Метод GET. Деструктивное тестирование. Мы пытаемся сломать систему,
          вызывая известный эндпоинт с неподдерживаемым типом запроса PUT/PATCH/DELETE."""
         assert get_list_of_achieve_destructive
@@ -133,7 +135,9 @@ class TestAchievementsLibraryNegative:
         Проверка на анализ граничных значений и эквивалентное разбиение строки tag."""
         assert create_achieve_negative_tag
 
-    def test_create_achievement_destructive(self, create_achievement_destructive):
+    @pytest.mark.parametrize('method', ['PUT', 'PATCH', 'DELETE'],
+                             ids=['method_PUT', 'method_PATCH', 'method_DELETE'])
+    def test_create_achievement_destructive(self, method, create_achievement_destructive):
         """Метод POST. Деструктивное тестирование. Мы пытаемся сломать систему,
          вызывая известный эндпоинт с неподдерживаемым типом запроса PUT/PATCH/DELETE."""
         assert create_achievement_destructive
@@ -184,7 +188,9 @@ class TestAchievementsLibraryNegative:
         Проверка на анализ граничных значений и эквивалентное разбиение строки tag."""
         assert update_achieve_tag_neg
 
-    def test_update_achieve_destructive(self, update_achieve_destructive):
+    @pytest.mark.parametrize('method', ['POST', 'PUT'],
+                             ids=['method_POST', 'method_PUT'])
+    def test_update_achieve_destructive(self, method, update_achieve_destructive):
         """Метод PATCH. Деструктивное тестирование. Мы пытаемся сломать систему,
          вызывая известный эндпоинт с неподдерживаемым типом запроса POST/PUT."""
         assert update_achieve_destructive

@@ -53,13 +53,17 @@ def test_update_connect_invalid_specialty(update_connect_invalid_specialty):
     assert update_connect_invalid_specialty
 
 
-def test_get_list_connect_org_destructive(get_list_connect_org_destructive):
+@pytest.mark.parametrize('method', ['POST', 'PUT', 'PATCH', 'DELETE'],
+                         ids=['method_POST', 'method_PUT', 'method_PATCH', 'method_DELETE'])
+def test_get_list_connect_org_destructive(method, get_list_connect_org_destructive):
     """Метод GET. Деструктивное тестирование. Мы пытаемся сломать систему,
     вызывая известный эндпоинт с неподдерживаемым типом запроса POST/PUT/PATCH/DELETE."""
     assert get_list_connect_org_destructive
 
 
-def test_get_connection_id_profile_destructive(get_connection_id_profile_destructive):
+@pytest.mark.parametrize('method', ['POST', 'PUT', 'DELETE'],
+                         ids=['method_POST', 'method_PUT', 'method_DELETE'])
+def test_get_connection_id_profile_destructive(method, get_connection_id_profile_destructive):
     """Метод GET. Деструктивное тестирование. Мы пытаемся сломать систему,
-    вызывая известный эндпоинт с неподдерживаемым типом запроса POST/PUT/PATCH/DELETE."""
+    вызывая известный эндпоинт с неподдерживаемым типом запроса POST/PUT/DELETE."""
     assert get_connection_id_profile_destructive
